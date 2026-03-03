@@ -21,7 +21,7 @@ export default function Header({
       <View className="flex-1 flex-row items-center">
         {showBack && (
           <TouchableOpacity onPress={() => router.back()} className="mr-3">
-            <Ionicons name="arrow-back" size={24} color={COLORS.primary} />
+            <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
           </TouchableOpacity>
         )}
         {showMenu && (
