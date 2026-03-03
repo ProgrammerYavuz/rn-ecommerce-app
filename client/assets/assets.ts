@@ -1019,3 +1019,40 @@ export const dummyProducts = [
         createdAt: "2026-02-08T04:21:50.830Z",
     },
 ];
+
+export const dummyWishlist = [dummyProducts[3], dummyProducts[10], dummyProducts[6]];
+
+export const dummyCart = {
+    _id: "6984434e30be1ba0cf5d0fd4",
+    user: "69819801a872c913f84d13f4",
+    items: [
+        {
+            product: {
+                _id: "6683d91f7f779795ecfa98eb",
+                name: "Erkek Bisiklet Yaka Pamuklu Tişört",
+                price: 48,
+                images: ["https://raw.githubusercontent.com/avinashdm/gs-images/main/forever/p_img14.png"],
+                stock: 95,
+            },
+            quantity: 1,
+            price: 48,
+            size: "M",
+            _id: "698952e1ef9d0c746ef827b9",
+        },
+        {
+            product: {
+                _id: "6683d4f47f779795ecfa98af",
+                name: "Erkek Bisiklet Yaka Pamuklu Tişört",
+                price: 68,
+                images: ["https://raw.githubusercontent.com/avinashdm/gs-images/main/forever/p_img8.png"],
+                stock: 100,
+            },
+            quantity: 1,
+            price: 68,
+            size: "L",
+            _id: "698952f5ef9d0c746ef827c6",
+        },
+    ],
+    totalAmount: 116,
+    createdAt: "2026-02-05T07:14:22.429Z",
+};
