@@ -33,13 +33,14 @@ export default function ProductDetails() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const fetchProduct = async () => {
-    setProduct(dummyProducts.find((product) => product._id === id) as any);
+    const found: any = dummyProducts.find((product) => product._id === id);
+    setProduct(found ?? null);
     setLoading(false);
   };
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (
@@ -61,17 +62,17 @@ export default function ProductDetails() {
 
   const isLiked = isInWishlist(product._id);
 
-  const handleAddToCart = ()=>{
-    if(!selectedSize){
-        Toast.show({
-            type: 'error',
-            text1: 'Beden Seçilmemiş',
-            text2: 'Lütfen beden seçiniz'
-        })
-        return;
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      Toast.show({
+        type: "error",
+        text1: "Beden Seçilmemiş",
+        text2: "Lütfen beden seçiniz",
+      });
+      return;
     }
-    addToCart(product, selectedSize || "")
-  }
+    addToCart(product, selectedSize || "");
+  };
 
   return (
     <View className="flex-1 bg-white">
@@ -128,47 +129,75 @@ export default function ProductDetails() {
         </View>
 
         <View className="px-5">
+          <View className="flex-row justify-between items-start mb-2">
+            <Text className="flex-1 text-2xl font-bold text-primary mr-4">
+              {product.name}
+            </Text>
             <View className="flex-row justify-between items-start mb-2">
-                <Text className="flex-1 text-2xl font-bold text-primary mr-4">{product.name}</Text>
-                <View className="flex-row justify-between items-start mb-2">
-                    <Ionicons name="star" size={14} color='#ffd700' />
-                    <Text className="text-sm text-primary font-bold ml-1">{product.ratings.average}</Text>
-                    <Text className="text-xs text-secondary ml-1">({product.ratings.count})</Text>
-                </View>
+              <Ionicons name="star" size={14} color="#ffd700" />
+              <Text className="text-sm text-primary font-bold ml-1">
+                {product.ratings.average}
+              </Text>
+              <Text className="text-xs text-secondary ml-1">
+                ({product.ratings.count})
+              </Text>
             </View>
+          </View>
 
-            <Text className="text-2xl font-bold text-primary mb-6">{product.price.toFixed(2)} TL</Text>
+          <Text className="text-2xl font-bold text-primary mb-6">
+            {product.price.toFixed(2)} TL
+          </Text>
 
-            {product.sizes && product.sizes.length > 0 && (
-                <>
-                 <Text className="text-base font-bold text-primary mb-3">Beden Seçiniz</Text>
-                 <View className="flex-row gap-3 mb-6 flex-wrap">
-                    {product.sizes.map((size)=>(
-                        <TouchableOpacity key={size} onPress={()=>setSelectedSize(size)}
-                         className={`w-12 h-12 rounded-full items-center justify-center border ${selectedSize === size ? "bg-primary border-primary": "bg-white border-gray-100"}`}
-                        >
-                            <Text className={`text-sm font-medium ${selectedSize === size ? "text-white": "text-primary"}`}>{size}</Text>
-                        </TouchableOpacity>
-                    ))}
-                 </View>
-                </>
-            )}
+          {product.sizes && product.sizes.length > 0 && (
+            <>
+              <Text className="text-base font-bold text-primary mb-3">
+                Beden Seçiniz
+              </Text>
+              <View className="flex-row gap-3 mb-6 flex-wrap">
+                {product.sizes.map((size) => (
+                  <TouchableOpacity
+                    key={size}
+                    onPress={() => setSelectedSize(size)}
+                    className={`w-12 h-12 rounded-full items-center justify-center border ${selectedSize === size ? "bg-primary border-primary" : "bg-white border-gray-100"}`}
+                  >
+                    <Text
+                      className={`text-sm font-medium ${selectedSize === size ? "text-white" : "text-primary"}`}
+                    >
+                      {size}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </>
+          )}
 
-            <Text className="text-base font-bold text-primary mb-3">Ürün Açıklaması</Text>
-            <Text className="text-sm text-secondary leading-6 mb-6">{product.description}</Text>
+          <Text className="text-base font-bold text-primary mb-3">
+            Ürün Açıklaması
+          </Text>
+          <Text className="text-sm text-secondary leading-6 mb-6">
+            {product.description}
+          </Text>
         </View>
       </ScrollView>
 
       <View className="absolute flex-row right-0 bottom-0 left-0 p-4 bg-white border-t border-gray-100">
-        <TouchableOpacity onPress={handleAddToCart} className="w-4/5 flex-row justify-center items-center bg-primary py-4 rounded-full shadow-lg">
-            <Ionicons name="bag-outline" size={20} color="white" />
-            <Text className="text-white font-bold text-base ml-2">Sepete Ekle</Text>
+        <TouchableOpacity
+          onPress={handleAddToCart}
+          className="w-4/5 flex-row justify-center items-center bg-primary py-4 rounded-full shadow-lg"
+        >
+          <Ionicons name="bag-outline" size={20} color="white" />
+          <Text className="text-white font-bold text-base ml-2">
+            Sepete Ekle
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>router.push("/(tabs)/cart")} className="w-1/5 flex-row justify-center py-3 relative">
-            <Ionicons name="cart-outline" size={24} />
-            <View className="absolute top-2 right-4 size-4 z-10 bg-black rounded-full justify-center items-center">
-                <Text className="text-white text-[9px]">{itemCount}</Text>
-            </View>
+        <TouchableOpacity
+          onPress={() => router.push("/(tabs)/cart")}
+          className="w-1/5 flex-row justify-center py-3 relative"
+        >
+          <Ionicons name="cart-outline" size={24} />
+          <View className="absolute top-2 right-4 size-4 z-10 bg-black rounded-full justify-center items-center">
+            <Text className="text-white text-[9px]">{itemCount}</Text>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
