@@ -1075,3 +1075,30 @@ export const dummyUser = {
         role: "admin",
     },
 };
+
+export const dummyAddress = [
+    {
+        _id: "6985ab44a309ee0204588085",
+        user: "69819801a872c913f84d13f4",
+        type: "home",
+        street: "Atatürk Mahallesi, Gül Sokak No:12 Daire:5",
+        city: "İstanbul",
+        state: "İstanbul",
+        zipCode: "34500",
+        country: "Türkiye",
+        isDefault: false,
+        createdAt: "2026-02-06T08:50:12.856Z",
+    },
+    {
+        _id: "6985ab44a309ee0204588086",
+        user: "69819801a872c913f84d13f4",
+        type: "work",
+        street: "Maslak Mahallesi, Büyükdere Caddesi No:45",
+        city: "İstanbul",
+        state: "İstanbul",
+        zipCode: "34398",
+        country: "Türkiye",
+        isDefault: false,
+        createdAt: "2026-02-06T08:50:12.856Z",
+    },
+];
