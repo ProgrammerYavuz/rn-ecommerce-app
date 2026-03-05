@@ -1056,3 +1056,22 @@ export const dummyCart = {
     totalAmount: 116,
     createdAt: "2026-02-05T07:14:22.429Z",
 };
+
+export const dummyUser = {
+    _id: "69819801a872c913f84d13f4",
+    name: "Programmer Yavuz",
+    email: "programmeryavuz@example.com",
+    firstName: "Programmer",
+    lastName: "Yavuz",
+    imageUrl: "https://avatars.githubusercontent.com/u/109480983",
+    emailAddresses: [
+        {
+            emailAddress: "programmeryavuz@example.com",
+        },
+    ],
+    clerkId: "user_396E235",
+    role: "admin",
+    publicMetadata: {
+        role: "admin",
+    },
+};
