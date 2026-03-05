@@ -99,11 +99,11 @@ export default function Checkout() {
               </TouchableOpacity>
             </View>
             <Text className="text-secondary leading-5">
-              {selectedAddress.street}, {selectedAddress.city}
+              {selectedAddress.street}
               {"\n"}
-              {selectedAddress.state} {selectedAddress.zipCode}
+              {selectedAddress.city} - {selectedAddress.district} {selectedAddress.zipCode} {selectedAddress.country}
               {"\n"}
-              {selectedAddress.country}
+              {selectedAddress.phone}
             </Text>
           </View>
         ) : (
