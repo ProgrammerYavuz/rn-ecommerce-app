@@ -11,15 +11,9 @@ import { Address } from "@/constants/types";
 import { dummyAddress } from "@/assets/assets";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "@/components/Header";
-import { COLORS } from "@/constants";
+import { ADDRESS_TYPE_LABELS, COLORS } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
-
-const addressTypeLabels: Record<Address["type"], string> = {
-  home: "Ev",
-  work: "İş",
-  other: "Diğer",
-};
 
 export default function Addresses() {
   const [addresses, setAddresses] = useState<Address[]>([]);
@@ -120,7 +114,7 @@ export default function Addresses() {
                       color={COLORS.primary}
                     />
                     <Text className="text-base font-bold text-primary ml-2">
-                      {addressTypeLabels[address.type]}
+                      {ADDRESS_TYPE_LABELS[address.type as keyof typeof ADDRESS_TYPE_LABELS] || "Bilinmiyor"}
                     </Text>
                     {address.isDefault && (
                       <View className="bg-primary/10 px-2 py-1 rounded ml-2">
@@ -206,7 +200,7 @@ export default function Addresses() {
                     <Text
                       className={type === t ? "text-white" : "text-primary"}
                     >
-                      {addressTypeLabels[t as keyof typeof addressTypeLabels]}
+                      {ADDRESS_TYPE_LABELS[t as keyof typeof ADDRESS_TYPE_LABELS]}
                     </Text>
                   </TouchableOpacity>
                 ))}

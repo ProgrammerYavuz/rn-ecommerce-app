@@ -12,15 +12,9 @@ import { Address } from "@/constants/types";
 import { dummyAddress } from "@/assets/assets";
 import Toast from "react-native-toast-message";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { COLORS } from "@/constants";
+import { ADDRESS_TYPE_LABELS, COLORS } from "@/constants";
 import Header from "@/components/Header";
 import { Ionicons } from "@expo/vector-icons";
-
-const addressTypeLabels: Record<Address["type"], string> = {
-  home: "Ev",
-  work: "İş",
-  other: "Diğer",
-};
 
 export default function Checkout() {
   const { cartTotal } = useCart();
@@ -92,7 +86,7 @@ export default function Checkout() {
           <View className="bg-white p-4 rounded-xl mb-6 shadow-sm">
             <View className="flex-row items-center justify-between mb-2">
               <Text className="text-base font-bold">
-                {addressTypeLabels[selectedAddress.type]}
+                {ADDRESS_TYPE_LABELS[selectedAddress.type as keyof typeof ADDRESS_TYPE_LABELS] || "Bilinmiyor"}
               </Text>
               <TouchableOpacity onPress={() => router.push("/addresses")}>
                 <Text className="text-accent text-sm">Değiştir</Text>
