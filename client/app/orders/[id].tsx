@@ -1,6 +1,6 @@
-import { View, Text, ActivityIndicator, ScrollView, Image } from 'react-native'
+import { View, Text, ActivityIndicator, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Order, Product } from '@/constants/types';
 import { dummyOrders, formatDate } from '@/assets/assets';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ import Header from '@/components/Header';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function OrderDetails() {
+    const router = useRouter();
     const { id } = useLocalSearchParams();
     const [order, setOrder] = useState<Order | null>(null);
     const [loading, setLoading] = useState(true);
@@ -55,7 +56,7 @@ export default function OrderDetails() {
     <SafeAreaView className='flex-1 bg-surface' edges={['top']}>
         <Header title={`#${order.orderNumber}`} showBack />
 
-        <ScrollView className='flex-1 px-4 pt-4'>
+        <ScrollView className='flex-1 px-4 pt-4' showsVerticalScrollIndicator={false}>
             <View className='bg-white p-4 rounded-xl mb-4 border border-gray-100'>
                 <Text className='text-lg font-bold text-primary mb-4'>Sipariş Bilgileri</Text>
 
@@ -82,7 +83,7 @@ export default function OrderDetails() {
                     const image = productData?.images?.[0]
 
                     return (
-                        <View key={index} className={`flex-row ${index !== order.items.length - 1 && 'border-b border-gray-100 pb-4 mb-4'}`}>
+                        <TouchableOpacity key={index} onPress={()=>router.push(`/product/${productData._id}`)} className={`flex-row ${index !== order.items.length - 1 && 'border-b border-gray-100 pb-4 mb-4'}`}>
                             {image ? (
                                 <Image source={{ uri: image }} className='w-16 h-16 rounded-md bg-gray-200' resizeMode='contain' />
                             ) : (
@@ -99,7 +100,7 @@ export default function OrderDetails() {
                                     <Text className='text-sm text-primary font-bold'>{item.price.toFixed(2)} TL</Text>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     )
                 })}
             </View>

@@ -1,0 +1,19 @@
+import { COLORS } from '@/constants'
+import { Stack } from 'expo-router'
+
+export default function ProductsLayout() {
+  return (
+        <Stack
+            screenOptions={{
+                headerStyle: { backgroundColor: "#fff" },
+                headerTintColor: COLORS.primary,
+                headerTitleStyle: { fontWeight: "bold" },
+                headerShadowVisible: false,
+            }}
+        >
+            <Stack.Screen name="index" options={{ title: "", headerShown: false }} />
+            <Stack.Screen name="add" options={{ title: "Yeni Ürün Ekle" }} />
+            <Stack.Screen name="edit/[id]" options={{ title: "Ürün Düzenle" }} />
+        </Stack>
+  )
+}

@@ -20,7 +20,7 @@ export const BANNERS = [
 ];
 
 export const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short", day: "numeric" };
+    const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };
     return new Date(dateString).toLocaleDateString("tr-TR", options);
 };
 
@@ -1061,6 +1061,7 @@ export const dummyUser = {
     _id: "69819801a872c913f84d13f4",
     name: "Programmer Yavuz",
     email: "programmeryavuz@example.com",
+    phone: "555 123 4567",
     firstName: "Programmer",
     lastName: "Yavuz",
     imageUrl: "https://avatars.githubusercontent.com/u/109480983",
@@ -1137,7 +1138,7 @@ export const dummyOrders = [
         ],
         paymentMethod: "card",
         paymentStatus: "paid",
-        orderStatus: "placed",
+        orderStatus: "delivered",
         subtotal: 88,
         shippingCost: 2,
         tax: 0,
@@ -1188,3 +1189,11 @@ export const dummyOrders = [
         orderNumber: "ORD-1770607959511",
     },
 ];
+
+export const dummyAdminStats = {
+    totalUsers: 3,
+    totalProducts: 60,
+    totalOrders: 4,
+    totalRevenue: 380,
+    recentOrders: dummyOrders,
+};
