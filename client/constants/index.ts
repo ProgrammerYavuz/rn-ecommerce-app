@@ -24,19 +24,28 @@ export const PROFILE_MENU = [
     { id: 5, title: "Ayarlar", icon: "settings-outline", route: "/settings" },
 ];
 
-export const getStatusColor = (status: string) => {
-    switch (status) {
-        case "placed":
-            return "bg-yellow-50 text-yellow-900"; // Sipariş Alındı
-        case "processing":
-            return "bg-indigo-50 text-indigo-900"; // Hazırlanıyor
-        case "shipped":
-            return "bg-purple-50 text-purple-900"; // Kargoya Verildi
-        case "delivered":
-            return "bg-green-50 text-green-900"; // Teslim Edildi
-        case "cancelled":
-            return "bg-red-50 text-red-900"; // İade Edildi
-        default:
-            return "bg-gray-50 text-gray-900";
-    }
+export const PAYMENT_STATUS_LABELS = {
+  paid: "Ödendi",
+  pending: "Beklemede",
+  failed: "Başarısız",
+  refunded: "İade edildi",
+};
+
+export const ORDER_STATUS_LABELS = {
+  placed: "Sipariş Alındı",
+  processing: "Hazırlanıyor",
+  shipped: "Kargoya Verildi",
+  delivered: "Teslim Edildi",
+  cancelled: "İptal Edildi",
+};
+
+export const PAYMENT_METHOD_LABELS = {
+  card: "Kartla ödeme",
+  cash: "Kapıda ödeme",
+};
+
+export const ADDRESS_TYPE_LABELS = {
+  home: "Ev",
+  work: "İş",
+  other: "Diğer",
 };

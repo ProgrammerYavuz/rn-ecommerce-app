@@ -7,7 +7,8 @@ export interface User {
     address?: {
         street: string;
         city: string;
-        state: string;
+        district: string;
+        phone?: string;
         zipCode: string;
         country: string;
     };
@@ -74,7 +75,8 @@ export interface Address {
     type: "home" | "work" | "other";
     street: string;
     city: string;
-    state: string;
+    district: string;
+    phone?: string;
     zipCode: string;
     country: string;
     isDefault: boolean;
@@ -98,7 +100,8 @@ export interface Order {
     shippingAddress: {
         street: string;
         city: string;
-        state: string;
+        district: string;
+        phone?: string;
         zipCode: string;
         country: string;
     };

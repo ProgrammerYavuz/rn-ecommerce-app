@@ -20,8 +20,8 @@ export const BANNERS = [
 ];
 
 export const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };
+    return new Date(dateString).toLocaleDateString("tr-TR", options);
 };
 
 export const dummyProducts = [
@@ -1055,4 +1055,145 @@ export const dummyCart = {
     ],
     totalAmount: 116,
     createdAt: "2026-02-05T07:14:22.429Z",
+};
+
+export const dummyUser = {
+    _id: "69819801a872c913f84d13f4",
+    name: "Programmer Yavuz",
+    email: "programmeryavuz@example.com",
+    phone: "555 123 4567",
+    firstName: "Programmer",
+    lastName: "Yavuz",
+    imageUrl: "https://avatars.githubusercontent.com/u/109480983",
+    emailAddresses: [
+        {
+            emailAddress: "programmeryavuz@example.com",
+        },
+    ],
+    clerkId: "user_396E235",
+    role: "admin",
+    publicMetadata: {
+        role: "admin",
+    },
+};
+
+export const dummyAddress = [
+    {
+        _id: "6985ab44a309ee0204588085",
+        user: "69819801a872c913f84d13f4",
+        type: "home",
+        street: "Atatürk Mahallesi, Gül Sokak No:12 Daire:5",
+        city: "İstanbul",
+        district: "Büyükçekmece",
+        phone: "555 123 4567",
+        zipCode: "34500",
+        country: "Türkiye",
+        isDefault: true,
+        createdAt: "2026-02-06T08:50:12.856Z",
+    },
+    {
+        _id: "6985ab44a309ee0204588086",
+        user: "69819801a872c913f84d13f4",
+        type: "work",
+        street: "Maslak Mahallesi, Büyükdere Caddesi No:45",
+        city: "İstanbul",
+        district: "Beşiktaş",
+        phone: "555 987 6543",
+        zipCode: "34398",
+        country: "Türkiye",
+        isDefault: false,
+        createdAt: "2026-02-06T08:50:12.856Z",
+    },
+];
+
+export const dummyOrders = [
+    {
+        shippingAddress: {
+            street: "Atatürk Mahallesi, Gül Sokak No:12 Daire:5",
+            city: "İstanbul",
+            district: "Büyükçekmece",
+            phone: "555 123 4567",
+            zipCode: "34500",
+            country: "Türkiye",
+        },
+        _id: "69895582ef9d0c746ef82849",
+        user: "69819801a872c913f84d13f4",
+        items: [
+            {
+                product: dummyProducts[6],
+                name: dummyProducts[6].name,
+                quantity: 1,
+                price: dummyProducts[6].price,
+                size: "L",
+                _id: "69895582ef9d0c746ef8284a",
+            },
+            {
+                product: dummyProducts[10],
+                name: dummyProducts[10].name,
+                quantity: 1,
+                price: 28,
+                size: "L",
+                _id: "69895582ef9d0c746ef8284b",
+            },
+        ],
+        paymentMethod: "card",
+        paymentStatus: "paid",
+        orderStatus: "delivered",
+        subtotal: 88,
+        shippingCost: 2,
+        tax: 0,
+        totalAmount: 90,
+        notes: "Güvenliğe bırakabilirsiniz.",
+        createdAt: "2026-02-09T03:33:22.261Z",
+        orderNumber: "ORD-1770608002261",
+        paymentIntentId: "pi_3SylEFFwJO8iCzjO1DHedE7e",
+    },
+    {
+        shippingAddress: {
+            street: "Maslak Mahallesi, Büyükdere Caddesi No:45",
+            city: "İstanbul",
+            district: "Beşiktaş",
+            phone: "555 987 6543",
+            zipCode: "34398",
+            country: "Türkiye",
+        },
+        _id: "69895557ef9d0c746ef8280d",
+        user: "69819801a872c913f84d13f4",
+        items: [
+            {
+                product: dummyProducts[14],
+                name: dummyProducts[14].name,
+                quantity: 1,
+                price: dummyProducts[14].price,
+                size: "M",
+                _id: "69895557ef9d0c746ef8280e",
+            },
+            {
+                product: dummyProducts[10],
+                name: dummyProducts[10].name,
+                quantity: 1,
+                price: dummyProducts[10].price,
+                size: "L",
+                _id: "69895557ef9d0c746ef8280f",
+            },
+        ],
+        paymentMethod: "cash",
+        paymentStatus: "pending",
+        orderStatus: "placed",
+        subtotal: 116,
+        shippingCost: 2,
+        tax: 0,
+        totalAmount: 118,
+        notes: "Lütfen teslimattan önce arayın.",
+        createdAt: "2026-02-09T03:32:39.510Z",
+        orderNumber: "ORD-1770607959511",
+    },
+];
+
+export const dummyAdminStats = {
+    totalUsers: 3,
+    totalProducts: 60,
+    totalOrders: 4,
+    totalRevenue: 380,
+    recentOrders: dummyOrders,
 };
